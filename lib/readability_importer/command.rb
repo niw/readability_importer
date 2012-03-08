@@ -13,10 +13,10 @@ module ReadabilityImporter
       :aliases => "-f",
       :desc => "Your email address."
     })
-    method_option(:jobs, {
+    method_option(:concurrency, {
       :type => :numeric,
-      :aliases => "-j",
-      :desc => "Number of jobs in parallel."
+      :aliases => "-c",
+      :desc => "Number of concurrency in parallel."
     })
     method_option(:verbose, {
       :type => :boolean,
@@ -34,7 +34,7 @@ module ReadabilityImporter
       importer = Importer.new(options[:email_address], {
         :verbose => options[:verbose],
         :from => options[:from],
-        :max_concurrency => options[:job],
+        :max_concurrency => options[:concurrency],
 
         :on_importing => proc do |urls|
           puts "Importing #{urls.size} url(s)..."
