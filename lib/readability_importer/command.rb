@@ -51,7 +51,7 @@ module ReadabilityImporter
           loader = klass.new(options[name])
           urls = loader.load
           puts "Start importing #{urls.size} url(s)."
-          importer.import(loader.load)
+          importer.import(urls)
         end
       end
     end
