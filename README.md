@@ -30,6 +30,14 @@ Or, just simply assign URLs.
 
     readability_importer import -e <Your Readability Email Address> --urls http://a.com http://b.com
 
+Outbound Port 25 Blocking
+-------------------------
+
+If your inetnet provider is blocking outbound port 25 (OP25B),
+this command might not work
+because this command directly talking with Readability SMTP server using SMTP protocol on port 25.
+Will address this issue soon.
+
 Note
 ----
 
