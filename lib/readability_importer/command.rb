@@ -31,7 +31,6 @@ module ReadabilityImporter
     end
     desc "import", "Import URL to Redability."
     def import
-      p options[:jobs]
       importer = Importer.new(options[:email_address], {
         :verbose => options[:verbose],
         :from => options[:from],
