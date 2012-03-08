@@ -22,13 +22,13 @@ export Instapaper CSV, then run next command.
 You can grab your Readability email address in [My Account](https://www.readability.com/account/email) page.
 
 If you have a file includes a URL per line,
-also you can use ``--url`` option.
+also you can use ``--urls`` option.
 
-    cat path_to_file | readability_importer import -e <Your Readability Email Address> --url -
+    cat path_to_file | readability_importer import -e <Your Readability Email Address> --urls -
 
 Or, just simply assign URLs.
 
-    readability_importer import -e <Your Readability Email Address> --url http://a.com http://b.com
+    readability_importer import -e <Your Readability Email Address> --urls http://a.com http://b.com
 
 Note
 ----

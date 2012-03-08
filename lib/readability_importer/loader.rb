@@ -28,7 +28,7 @@ module ReadabilityImporter
       end
     end
 
-    class UrlLoader < Base
+    class UrlsLoader < Base
       def self.desc
         "List of URLs."
       end
