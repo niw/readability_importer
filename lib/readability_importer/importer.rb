@@ -11,6 +11,7 @@ module ReadabilityImporter
       @from = options[:from] || "foo@bar"
       @max_concurrency = options[:max_concurrency] || 4
       @verbose = !!options[:verbose]
+      @retry = !!options[:retry]
 
       @on_importing = options[:on_importing]
       @on_imported = options[:on_imported]
@@ -23,7 +24,7 @@ module ReadabilityImporter
 
       EventMachine.run do
         iterator = EventMachine::Iterator.new(urls_set, @max_concurrency)
-        iterator.each(proc do |urls, iterator|
+        iterator.each(proc do |urls, it|
           @on_importing.call(urls) if @on_importing
           EventMachine::Protocols::SmtpClient.send({
             :verbose => @verbose,
@@ -36,11 +37,14 @@ module ReadabilityImporter
           }).tap do |job|
             job.callback do
               @on_imported.call(urls) if @on_imported
-              iterator.next
+              it.next
             end
-            job.errback do
+            job.errback do |*args|
               @on_failed.call(urls) if @on_failed
-              iterator.next
+              if @retry
+                iterator.instance_variable_get(:@list).unshift(urls)
+              end
+              it.next
             end
           end
         end, proc do

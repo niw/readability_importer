@@ -18,6 +18,11 @@ module ReadabilityImporter
       :aliases => "-c",
       :desc => "Number of concurrency in parallel."
     })
+    method_option(:retry, {
+      :type => :boolean,
+      :aliases => "-r",
+      :desc => "Retry when failed."
+    })
     method_option(:verbose, {
       :type => :boolean,
       :aliases => "-v",
@@ -35,6 +40,7 @@ module ReadabilityImporter
         :verbose => options[:verbose],
         :from => options[:from],
         :max_concurrency => options[:concurrency],
+        :retry => options[:retry],
 
         :on_importing => proc do |urls|
           puts "Importing #{urls.size} url(s)..."
