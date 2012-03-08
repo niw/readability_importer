@@ -1,4 +1,5 @@
 require 'csv'
+require 'uri'
 
 module ReadabilityImporter
   module Loader
@@ -51,6 +52,8 @@ module ReadabilityImporter
     end
 
     class InstapaperCsvLoader < Base
+      NON_ASCII_REGEXP = /[^\x00-\x7f]/u
+
       def self.desc
         "Path to CSV file"
       end
@@ -61,7 +64,7 @@ module ReadabilityImporter
 
       def load
         CSV.read(@path).map do |line|
-          line[0]
+          URI.escape(line[0], NON_ASCII_REGEXP)
         end.reverse
       end
     end
