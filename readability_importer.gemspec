@@ -6,9 +6,9 @@ Gem::Specification.new do |s|
   s.version     = ReadabilityImporter::VERSION
   s.authors     = ["Yoshimasa Niwa"]
   s.email       = ["niw@niw.at"]
-  s.homepage    = "http://niw.at/"
+  s.homepage    = "https://github.com/niw/readability_importer"
   s.summary     =
-  s.description = "Import many URLs into Readability."
+  s.description = "Import many URLs to Readability."
 
   s.test_files       = `git ls-files -- test/*`.split("\n")
   s.extra_rdoc_files = `git ls-files -- README*`.split("\n")
