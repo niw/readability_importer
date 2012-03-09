@@ -63,7 +63,7 @@ module ReadabilityImporter
       end
 
       def load
-        CSV.read(@path).map do |line|
+        CSV.read(@path, :encoding => 'UTF-8').map do |line|
           URI.escape(line[0], NON_ASCII_REGEXP)
         end.reverse
       end
