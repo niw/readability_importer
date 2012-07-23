@@ -9,7 +9,7 @@ Install
 This command is provided in RubyGems format.
 Run next command to insall all dependencies and command.
 
-    gem install redability_importer
+    gem install readability_importer
 
 Usage
 -----
@@ -17,7 +17,7 @@ Usage
 To import [Instapaper](http://www.instapaper.com/) URL(s),
 export Instapaper CSV, then run next command.
 
-    redability_importer import -e <Your Readability Email Address> --instapaper-csv <Path to CSV>
+    readability_importer import -e <Your Readability Email Address> --instapaper-csv <Path to CSV>
 
 You can grab your Readability email address in [My Account](https://www.readability.com/account/email) page.
 
